@@ -1,0 +1,27 @@
+<!doctype HTML>
+<html>
+<head>
+    <script src="libs/aframe.js"></script>
+    <script src="libs/aframe-ar.js"></script>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="js/components/console/console.css" rel="stylesheet">
+</head>
+  <body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs>
+      <a-marker preset="hiro">
+          <a-box position='0 0.5 0' material='color: yellow;'></a-box>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <template id="tmpl-console">
+        <div class="console"></div>
+    </template>
+
+    <script src="js/components/console/Console.js"></script>
+    <script src="js/services/OrientationService.js"></script>
+    <script src="js/services/PositionService.js"></script>
+    <script src="js/app.js"></script>
+    
+  </body>
+</html>
