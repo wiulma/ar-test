@@ -4,8 +4,5 @@ const orientationService = {
     },
 
     debugger() {
-        const c = document.createDocumentFragment();
-        
-        document.appendChild(c);
     }
 } 
