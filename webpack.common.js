@@ -1,59 +1,60 @@
 const path = require('path')
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpack = require('webpack');
 const glob = require('glob');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
+    vendor: ['aframe', 'aframe-environment-component', 'bootstrap'],
     app: './src/index.js',
   },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
+  stats: {
+    colors: true
+  },
   optimization: {
-    runtimeChunk: 'single',
     splitChunks: {
-        cacheGroups: {
-            vendors: {
-                test: /[\\/]node_modules[\\/]/,
-                name: 'vendors',
-                enforce: true,
-                chunks: 'all'
-            },
-            commons: {
-              name: 'commons',
-              chunks: 'initial',
-              minChunks: 2
-            }
-        }
-    }
+      cacheGroups: {
+        // match the entry point and spit out the file named here
+        vendor: {
+          chunks: 'all',
+          name: 'vendor',
+          test: 'vendor',
+          filename: 'vendor.js',
+          enforce: true,
+        },
+      },
+    },
+    runtimeChunk: true
   },
   module: {
     rules: [
-        {
-          test: /\.html$/,
-          exclude: /node_modules/,
-          use: {
-            loader: 'html-loader',
-            options: {
-              minimize: true,
-              removeComments: true,
-              collapseWhitespace: true,
-            }
+      {
+        test: /\.html$/,
+        include: [path.resolve(__dirname, 'src')],
+        use: {
+          loader: 'html-loader',
+          options: {
+            minimize: true,
+            removeComments: true,
+            collapseWhitespace: true,
           }
-        },      
-        {
-          test: /\.js$/,
-          exclude: /(node_modules|vendors|lib)/,
-          use: {
-            loader: 'babel-loader',
-          }
-        }   
-    ]  
+        }
+      },
+      {
+        test: /\.js$/,
+        include: [path.resolve(__dirname, 'src')],
+        use: {
+          loader: 'babel-loader',
+        }
+      }
+    ]
   },
-  plugins: [    
+  plugins: [
     new CopyPlugin([
       {
         from: 'src/assets',
@@ -67,7 +68,6 @@ module.exports = {
       'window.$': 'jquery',
       'window.jQuery': 'jquery'
     }),
-
     new CleanWebpackPlugin({ verbose: true })
-  ]  
+  ]
 }

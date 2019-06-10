@@ -8,12 +8,37 @@ const path = require('path');
 module.exports = merge(common, {
   mode: 'development',
   devServer: {
+    host: '0.0.0.0',
     contentBase: path.resolve(__dirname),
     watchContentBase: true,
     port: 8081
   },
   module: {
     rules: [
+
+      {
+        test: /\.(scss)$/,
+        use: [
+          {
+            loader: 'style-loader', // inject CSS to page
+          }, {
+            loader: 'css-loader', // translates CSS into CommonJS modules
+          }, {
+            loader: 'postcss-loader', // Run postcss actions
+            options: {
+              plugins: function () { // postcss plugins, can be exported to postcss.config.js
+                return [
+                  require('autoprefixer')
+                ];
+              }
+            }
+          }, {
+            loader: 'resolve-url-loader', // translates CSS into CommonJS modules
+          }, {
+            loader: 'sass-loader' // compiles Sass to CSS
+          }
+        ]
+      },
       {
         test: /\.css$/,
         use: [
@@ -23,7 +48,7 @@ module.exports = merge(common, {
         ]
       },
       {
-        test: /\.(png|svg|jpg|gif|eot)$/,
+        test: /\.(png|svg|jpg|gif|eot|gbl)$/,
         use: [
           {
             loader: 'file-loader'
