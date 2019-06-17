@@ -23,9 +23,10 @@ customElements.define('app-notification', class extends HTMLElement {
 	show(evt) {
 		this.message = evt.detail;
         (this.message != '') && this.notifyMessage()
-        setTimeout(() => {
+        /*setTimeout(() => {
             $('.notification').alert('close')
-        }, this.MESSAGE_SHOW);
+		}, this.MESSAGE_SHOW);
+		*/
 	}
 
 	notifyMessage() {
@@ -33,10 +34,13 @@ customElements.define('app-notification', class extends HTMLElement {
         const n = domUtils.htmlToElement(tmpl);
 
 		n.addEventListener('closed.bs.alert', () => {
-			this.firstElementChild.parentNode.removeChild(this.firstElementChild)
+			this.firstElementChild.unbind("closed.bs.modal");
+			this.firstElementChild.parentNode.removeChild(this.firstElementChild);
 		});
 
-		this.appendChild(n);
+		window.requestAnimationFrame(() => {
+			this.appendChild(n);
+		})		
 	}
 
 })
