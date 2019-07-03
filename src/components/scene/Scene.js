@@ -23,6 +23,16 @@ export default {
         df.append(f);
         df.append(t);
         return df;
+    },
+
+    createWaiting() {
+        const t = document.createElement('a-text');
+        t.setAttribute("waiting", null);
+        t.setAttribute("color", 'rgb(198, 200, 121)');
+        t.setAttribute("opacity", '.8');
+        t.setAttribute("position", '-1.2 1.7 -1');
+        t.setAttribute('value', "Waiting for next fight...");
+        return t;
     }
 
 }

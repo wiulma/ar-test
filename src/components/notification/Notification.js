@@ -23,10 +23,10 @@ customElements.define('app-notification', class extends HTMLElement {
 	show(evt) {
 		this.message = evt.detail;
         (this.message != '') && this.notifyMessage()
-        /*setTimeout(() => {
+        setTimeout(() => {
             $('.notification').alert('close')
 		}, this.MESSAGE_SHOW);
-		*/
+		
 	}
 
 	notifyMessage() {

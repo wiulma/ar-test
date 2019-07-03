@@ -16,35 +16,21 @@ export default {
 	},
 
 	vote(id) {
-		const evt = new CustomEvent("ShowVotePreview",{detail: {id}});
+		console.log("vote", id)
+		const evt = new Event("StopVote");
 		document.dispatchEvent(evt);
+
+		setTimeout(() => {
+			this.start();
+		}, 4000)
+		return Promise.resolve();
 	},
 
-	/*
-
-	.then( () => {
-		voteService.showPreview();
-		notificationService.show(
-		  {
-			text: 'Hai votato giorgio!'
-		  },
-		  "success");
-	  })
-*/
 	showPreview(id) {
 		const detail = fightService.get(id);
 		const evt = new CustomEvent("ShowVotePreview",{detail});
 		document.dispatchEvent(evt);
-
-		/*
-		notificationService.show(
-			{
-			  text: `Hai votato ${f.name}!`
-			},
-			"success");
-		this.stopVote(true);
-		*/
 	}
-	
+
 
 }

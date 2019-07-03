@@ -4,8 +4,8 @@ import sceneComponent from "../components/scene/Scene"
 export default {
 
     start() {
-        document.addEventListener("StartVote", this.showFigthers);
-        document.addEventListener("StopVote", this.emptyScene)
+        document.addEventListener("StartVote", this.startVote);
+        document.addEventListener("StopVote", this.stopVote)
     },
 
 
@@ -37,7 +37,7 @@ export default {
 
     // },
 
-    showFigthers() {
+    startVote() {
         console.log("showFigthers");
         const frag = document.createDocumentFragment();
         let posy = -4;
@@ -52,16 +52,24 @@ export default {
             frag.appendChild(sceneComponent.createFighter(el, idx, view));
             posy += 2;
         })
-        document.querySelector('a-scene').appendChild(frag);
-        document.querySelector('a-scene').flushToDOM(true);
+        const s = document.querySelector('a-scene');
+        s.querySelectorAll("[waiting]")
+            .forEach(el => el.parentElement.removeChild(el));
+        s.appendChild(frag);
+        s.flushToDOM(true);
     },
 
-    emptyScene() {
-        console.log("emptyScene");
+    stopVote() {
+        console.log("stopVote");
         const s = document.querySelector('a-scene');
 
-        s.querySelectorAll("a-entity[gltf-model]")
+        s.querySelectorAll("[vote-marker]")
             .forEach(el => el.parentElement.removeChild(el));
+        
+        const frag = document.createDocumentFragment();
+        frag.appendChild(sceneComponent.createWaiting());
+        s.appendChild(frag);
+        s.flushToDOM(true);
 
     }
 
