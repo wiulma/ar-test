@@ -41,7 +41,7 @@ export default {
         console.log("showFigthers");
         const frag = document.createDocumentFragment();
         let posy = -4;
-        fightService.fighters.forEach((el, idx) => {
+        fightService.getFigthers().forEach((el, idx) => {
             const view = {
                 position: {
                     x: posy,
@@ -49,6 +49,7 @@ export default {
                     z: -5
                 }
             };
+            el.index = idx;
             frag.appendChild(sceneComponent.createFighter(el, idx, view));
             posy += 2;
         })

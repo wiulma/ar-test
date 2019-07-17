@@ -9,14 +9,24 @@
 <body>
 	<a-scene background="color: #FAFAFA" raycaster="objects: .clickable" cursor="rayOrigin: mouse" debug>
 		<a-assets>
-			<img id="environment" crossorigin="anonymous"
-				src="assets/garage.jpg"
+			<img id="environment" crossorigin="anonymous" src="assets/garage.jpg"
 				data-src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
-			
-			<a-asset-item id="glbt-duck"
-				src-test="assets/test2.gltf"
-				src="assets/duck/duck.gltf">
+
+			<a-asset-item id="model-fighter-0" src="assets/avatars/legoman.gltf" src-ok="assets/duck/duck.gltf">
 			</a-asset-item>
+			<a-asset-item id="model-fighter-1" src="assets/avatars/test.gltf" >
+			</a-asset-item>
+			<a-asset-item id="model-fighter-2" src="assets/avatars/legoman.gltf" >
+			</a-asset-item>
+			<a-asset-item id="model-fighter-3" src="assets/avatars/test.gltf" >
+			</a-asset-item>
+			<a-asset-item id="model-fighter-4" src="assets/avatars/legoman.gltf" >
+			</a-asset-item>
+			<a-asset-item id="model-fighter-5" src="assets/avatars/test.gltf" >
+			</a-asset-item>
+			<a-asset-item id="model-fighter-6" src="assets/avatars/legoman.gltf" >
+			</a-asset-item>
+
 		</a-assets>
 		<a-sky id="image-360" radius="10" src="#environment"
 			animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"

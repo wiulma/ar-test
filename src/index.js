@@ -19,10 +19,6 @@ sceneService.start();
 setTimeout(() => {
     console.log("start vote");
     voteService.start();
-    setTimeout(() => {
-        console.log("stop vote");
-        voteService.stop();
-    }, 10000)
 }, 3000)
 
 
