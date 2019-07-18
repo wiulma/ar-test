@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Sample Webpack App</title>
+	<title>Code In The Dark</title>
 </head>
 
 <body>
@@ -32,6 +32,9 @@
 			animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
 			animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade">
 		</a-sky>
+		<a-light color="#BBB" type="ambient"></a-light>
+		<a-light color="#3360f9" intensity="10" castShadow="true" angle="45" groundColor="#313131" type="directional" position="1.8 2.5 2"></a-light>
+
 	</a-scene>
 	<app-notification></app-notification>
 	<app-vote></app-vote>

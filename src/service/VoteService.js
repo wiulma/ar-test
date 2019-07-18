@@ -21,7 +21,6 @@ export default {
 		const evt = new Event("StopVote");
 		document.dispatchEvent(evt);
 		this.simulateStartVote();
-
 		return Promise.resolve();
 	},
 

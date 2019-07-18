@@ -17,6 +17,7 @@ export default {
                   this.difftime = this.endTime - this.startTime
               });
               this.el.addEventListener('click', function (evt) {
+                console.log('click on', evt.target.dataset.id);
                 this.longpress = (this.difftime>0 && this.difftime<=200) ? false : true;
                 (!this.longpress) && voteService.showPreview(evt.target.dataset.id);
                 setTimeout(() => {

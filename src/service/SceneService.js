@@ -46,7 +46,7 @@ export default {
                 position: {
                     x: posy,
                     y: 2,
-                    z: -5
+                    z: -6
                 }
             };
             el.index = idx;
