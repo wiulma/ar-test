@@ -49,7 +49,21 @@ module.exports = {
         test: /\.js$/,
         include: [path.resolve(__dirname, 'src')],
         use: {
-          loader: 'babel-loader',
+          loader: 'babel-loader'/*,
+          options: {
+            "presets": [
+              ["@babel/env", {
+                "modules": false,
+                "targets": {
+                  "browsers": [
+                    "last 2 iOS major versions",
+                    "last 2 Chrome versions"
+                  ]
+                },
+                "useBuiltIns": "usage"
+              }]
+            ]
+          }*/
         }
       }
     ]

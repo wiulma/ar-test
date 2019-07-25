@@ -1,5 +1,5 @@
 import 'aframe'
-import 'aframe-environment-component'
+// import 'aframe-environment-component'
 
 import 'bootstrap/js/dist/alert'
 import 'bootstrap/js/dist/modal'
