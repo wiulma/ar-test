@@ -43,3 +43,6 @@ https://blackthread.io/gltf-converter/
 2. personaggio tiene in mano la preview
 
 3. se esci e rientri e hai già votato, non puoi più votare
+
+vote panel:
+https://aframe.io/examples/showcase/moonrider/
